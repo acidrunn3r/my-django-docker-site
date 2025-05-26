@@ -18,4 +18,4 @@ COPY . .
 COPY scripts/wait-for-it.sh /wait-for-it.sh
 RUN chmod +x /wait-for-it.sh
 
-CMD ["bash", "-c", "/wait-for-it.sh db:5432 -- python manage.py migrate && daphne -b 0.0.0.0 -p 8000 web_project.asgi:application"]
+CMD ["bash", "-c", "python manage.py migrate && daphne -b 0.0.0.0 -p 8000 web_project.asgi:application"]
