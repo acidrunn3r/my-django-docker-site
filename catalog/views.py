@@ -47,13 +47,14 @@ def register(request):
         form = CustomUserCreationForm(request.POST)
         if form.is_valid():
             user = form.save()
-            # Аутентифицируем пользователя с email, а не username, так как USERNAME_FIELD = 'email'
             user = authenticate(
                 request, 
                 email=form.cleaned_data['email'],
                 password=form.cleaned_data['password1']
             )
             if user is not None:
+                message = f"🎉 Новый пользователь!\nЛогин: {form.cleaned_data['username']}\nEmail: {form.cleaned_data['email']}"
+                send_telegram_notification(message)
                 login(request, user)
                 return redirect('profile')
     else:
@@ -79,61 +80,9 @@ def user_login(request):
 def is_admin(user):
     return user.is_authenticated and user.is_admin
 
-def register_old(request):
-    errors = {}
-    if request.method == 'POST':
-        username = request.POST.get('username', '')
-        password = request.POST.get('password', '')
-        email = request.POST.get('email', '')
-
-        if User.objects.filter(username=username).exists():
-            errors['username'] = 'Этот логин уже занят'
-
-        if not re.match(r'^[A-Za-z0-9_]{3,20}$', username):
-            errors['username'] = 'Только латиница, цифры и _ (3-20 символов)'
-
-        if not re.match(r'^(?=.*[A-Z])(?=.*\d).{8,}$', password):
-            errors['password'] = 'Нужно 8+ символов, 1 заглавная буква и 1 цифра'
-
-        if not errors:
-            try:
-                user = User.objects.create_user(
-                    username=username,
-                    password=password,
-                    email=email
-                )
-                user = authenticate(request, username=username, password=password)
-                if user is not None:
-                    login(request, user)
-                    message = f"🎉 Новый пользователь!\nЛогин: {username}\nEmail: {email}"
-                    send_telegram_notification(message)
-                    return redirect('index')
-            except Exception as e:
-                logger.error(f"Ошибка создания пользователя: {e}")
-                errors['general'] = 'Ошибка регистрации. Попробуйте позже.'
-
-    return render(request, 'catalog/register.html', {'errors': errors})
-
-
 User = get_user_model()
 
 def send_telegram_notification(text):
-    bot_token = settings.TELEGRAM_BOT_TOKEN
-    chat_id = settings.TELEGRAM_CHAT_ID
-    url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
-
-    try:
-        response = requests.post(url, json={
-            'chat_id': chat_id,
-            'text': text,
-            'parse_mode': 'HTML'
-        })
-        logger.info(f"Response from Telegram API: {response.status_code}, {response.text}")
-    except Exception as e:
-        logger.error(f"Ошибка отправки в Telegram: {e}")
-
-
-def send_telegram_notification_old(text):
     bot_token = settings.TELEGRAM_BOT_TOKEN
     chat_id = settings.TELEGRAM_CHAT_ID
     url = f"https://api.telegram.org/bot{bot_token}/sendMessage"
@@ -180,7 +129,7 @@ def user_management(request):
 @user_passes_test(lambda u: u.is_superuser)
 def delete_user(request, user_id):
     user = get_object_or_404(User, id=user_id)
-    if request.user != user:  # Нельзя удалить себя
+    if request.user != user:  
         user.delete()
         messages.success(request, f'Пользователь {user.username} удален')
     return redirect('user_management')
@@ -196,13 +145,10 @@ def toggle_like(request, image_id):
 
         like, created = Like.objects.get_or_create(user=request.user, image=image)
         if not created:
-            # Уже был лайк — убираем
             like.delete()
 
-        # Получаем новое количество лайков
         likes_count = Like.objects.filter(image=image).count()
 
-        # Отправляем сообщение по WebSocket
         channel_layer = get_channel_layer()
         async_to_sync(channel_layer.group_send)(
             "likes_group",

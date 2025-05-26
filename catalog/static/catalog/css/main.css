@@ -324,7 +324,7 @@ body.dark-theme {
     color: #888;
 }
 
-/* Стили профиля */
+/* стили профиля */
 .profile-container {
     padding: 40px 0;
 }
@@ -467,7 +467,7 @@ body.dark-theme {
     display: block;
 }
 
-/* Стили для галереи */
+/* стили для галереи */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -520,7 +520,7 @@ body.dark-theme {
     background: #e00b16;
 }
 
-/* Стили для админ-панели */
+/* стили для админ-панели */
 .admin-panel {
     max-width: 1000px;
     margin: 40px auto;
@@ -556,7 +556,7 @@ body.dark-theme {
     background: #c00a14;
 }
 
-/* Стили для галереи и лайков */
+/* стили для галереи и лайков */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));

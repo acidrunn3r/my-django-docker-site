@@ -165,17 +165,13 @@ LOGGING = {
 CHANNEL_LAYERS = {
     "default": {
         "BACKEND": "channels.layers.InMemoryChannelLayer",
-        # "BACKEND": "channels_redis.core.RedisChannelLayer",
-        # "CONFIG": {
-        #     "hosts": [("redis://localhost:6379")],
-        # },
     }
 }
 
 LOGIN_URL = 'login'  
 LOGIN_REDIRECT_URL = 'index'  
 LOGOUT_REDIRECT_URL = 'index'  
-SESSION_COOKIE_AGE = 1209600  #2 weeks
+SESSION_COOKIE_AGE = 1209600  
 SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 SESSION_SAVE_EVERY_REQUEST = True
 

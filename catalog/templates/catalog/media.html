@@ -90,20 +90,17 @@ function getCookie(name) {
 const csrftoken = getCookie('csrftoken');
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Подключение к WebSocket
     const socketProtocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
     const socket = new WebSocket(
         socketProtocol + window.location.host + '/ws/likes/'
     );
 
-    // Обработка входящих сообщений
     socket.onmessage = function(e) {
         const data = JSON.parse(e.data);
         if (data.type === 'like_update') {
             document.querySelectorAll(`.like-btn[data-image-id="${data.image_id}"] .like-count`)
                 .forEach(el => el.textContent = data.likes_count);
             
-            // Обновляем состояние кнопки
             document.querySelectorAll(`.like-btn[data-image-id="${data.image_id}"]`)
                 .forEach(btn => {
                     btn.classList.toggle('liked', data.likes_count > parseInt(btn.querySelector('.like-count').textContent));
@@ -111,7 +108,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     };
 
-    // Обработчик кликов на лайки
     document.querySelectorAll('.like-btn').forEach(button => {
         button.addEventListener('click', function(e) {
             e.preventDefault();
