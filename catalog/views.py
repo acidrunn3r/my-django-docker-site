@@ -1,44 +1,25 @@
 from django.core.exceptions import ValidationError
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 import re
 import requests
 from django.conf import settings
 import logging
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout, get_user_model
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.contrib.auth.decorators import login_required
+from django.contrib.auth.decorators import login_required, user_passes_test
 from django.contrib.auth.models import User
-from django.http import JsonResponse
-from django.shortcuts import render, redirect, get_object_or_404
 from django.http import JsonResponse
 from .models import User, Image, Like
 from .forms import CustomUserCreationForm, LoginForm
-from django.contrib.auth import login, authenticate, logout
-from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.decorators.http import require_POST
 import json
-from django.contrib.auth import get_user_model
-from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate
-from django.contrib.auth.forms import UserCreationForm
-from .forms import CustomUserCreationForm, LoginForm
 from django.contrib import messages
-from django.http import JsonResponse
-from django.views.decorators.http import require_POST
-from django.shortcuts import get_object_or_404
-from .models import Image, Like
-import json
 from django.db import models
 from django.db.models import Count
 from channels.layers import get_channel_layer
 from asgiref.sync import async_to_sync
-from django.http import JsonResponse
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from .models import Image, Like
-from channels.layers import get_channel_layer
-from asgiref.sync import async_to_sync
 
 logger = logging.getLogger(__name__)
 
