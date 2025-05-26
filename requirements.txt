@@ -10,3 +10,4 @@ requests==2.32.3
 autobahn==24.4.2
 Twisted==24.11.0
 dj-database-url
+whitenoise
