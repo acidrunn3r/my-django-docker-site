@@ -29,9 +29,11 @@ SECRET_KEY = 'django-insecure-$qtc8ul3*ts=46jj-sbxj3nol!01c6$8$#%#^r=t(222yooz3a
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['https://my-django-docker-site.onrender.com']
 
-
+CSRF_TRUSTED_ORIGINS = [
+'https://my-django-docker-site.onrender.com',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
