@@ -1,0 +1,11 @@
+Django==4.2.21
+channels==4.2.2
+channels_redis==4.2.1
+daphne==4.2.0
+asgiref==3.8.1
+redis==6.1.0
+pillow==11.2.1
+psycopg2-binary==2.9.10
+requests==2.32.3
+autobahn==24.4.2
+Twisted==24.11.0

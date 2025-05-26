@@ -1,0 +1,244 @@
+/* ====== Variables ====== */
+:root {
+    --mazda-red: #e00b16;
+    --mazda-dark: #121212;
+    --mazda-gray: #1e1e1e;
+    --mazda-light: #f8f9fa;
+    --max-width: 1200px;
+}
+
+/* ====== Base Styles ====== */
+body.dark-theme {
+    background-color: var(--mazda-dark);
+    color: var(--mazda-light);
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* ====== Navigation ====== */
+.mazda-nav {
+    background: linear-gradient(135deg, #000000 0%, var(--mazda-red) 100%);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.logo img {
+    height: 40px;
+}
+
+.logo-text {
+    font-size: 1.8rem;
+    font-weight: 700;
+    background: linear-gradient(to right, #fff, #e0e0e0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.nav-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    transition: all 0.3s;
+    position: relative;
+}
+
+.nav-link:hover {
+    background: rgba(255,255,255,0.1);
+}
+
+.nav-link.active {
+    background: var(--mazda-red);
+    box-shadow: 0 4px 8px rgba(224,11,22,0.4);
+}
+
+/* ====== Hero Section ====== */
+.hero {
+    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                url('../img/fuji-blur.jpg') center/cover;
+    padding: 6rem 0;
+    text-align: center;
+    color: white;
+}
+
+.hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, #fff, var(--mazda-red));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+.hero p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* ====== Models Section ====== */
+.models-section {
+    padding: 3rem 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: var(--mazda-light);
+}
+
+.mazda-card {
+    background: var(--mazda-gray);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: all 0.3s;
+    height: 100%;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.mazda-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(224,11,22,0.3);
+}
+
+.card-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-body h3 {
+    color: var(--mazda-red);
+    margin-bottom: 0.5rem;
+    font-size: 1.4rem;
+}
+
+.specs {
+    color: #aaa;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.description {
+    margin-bottom: 1.5rem;
+}
+
+/* ====== Buttons ====== */
+.mazda-btn {
+    display: inline-block;
+    background: var(--mazda-red);
+    color: white;
+    padding: 0.7rem 1.5rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s;
+    border: none;
+    cursor: pointer;
+}
+
+.mazda-btn:hover {
+    background: #c00a14;
+    transform: translateY(-2px);
+}
+
+/* ====== Video Section ====== */
+.video-section {
+    padding: 2rem 0;
+    margin-bottom: 3rem;
+}
+
+.video-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* ====== Footer ====== */
+.mazda-footer {
+    background: linear-gradient(90deg, var(--mazda-red), #000);
+    color: white;
+    padding: 2rem 0;
+    margin-top: auto;
+}
+
+.footer-content {
+    text-align: center;
+}
+
+.copyright {
+    margin-bottom: 0.5rem;
+}
+
+.official-link {
+    color: white;
+    text-decoration: none;
+    transition: opacity 0.3s;
+}
+
+.official-link:hover {
+    opacity: 0.8;
+}
+
+/* ====== Responsive ====== */
+@media (max-width: 768px) {
+    .nav-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .hero {
+        padding: 4rem 0;
+    }
+    
+    .hero h1 {
+        font-size: 2rem;
+    }
+    
+    .card-img {
+        height: 180px;
+    }
+}

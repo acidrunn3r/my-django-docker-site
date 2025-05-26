@@ -1,0 +1,21 @@
+services:
+  python-web_project:
+    build:
+      context: .
+      dockerfile: ./dockerfile
+    container_name: python-web_project
+    restart: unless-stopped
+    init: true
+    # env_file: .env  # Uncomment if .env file exists
+    ports:
+      - "8000:8000"  # Expose Daphne/ASGI server
+    # If you add a database or other services, add 'depends_on' here
+    # volumes:  # Uncomment and configure if you need to persist media/static files
+    #   - ./media:/app/media
+    #   - ./staticfiles:/app/staticfiles
+    networks:
+      - webnet
+
+networks:
+  webnet:
+    driver: bridge

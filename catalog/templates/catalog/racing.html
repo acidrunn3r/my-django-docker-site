@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{% load static %}
+<link href="{% static 'catalog/css/main.css' %}" rel="stylesheet">
+<html>
+	<head>
+		<title> Автоспорт </title>
+		<meta charset="utf-8">
+		<link rel="shortcut icon" href={%static "img/mazda.png"%}>
+		<link rel="stylesheet" href={%static "css/style.css"%}>
+	</head>
+	<body>
+		<div id="top" class="big_bold main-banner">
+			<p> <a href="{% url 'index' %}"> маздарейсер.ру <img src={%static "img/mazda_title.png"%} height = 100> </a> </p>
+		</div> 
+		<ul class="list">
+			<li> Первый элемент </li>
+			<li> Второй элемент </li>  
+			<ul> 
+				<li> 1 </li>
+				<ul>
+					<li> 2 </li>
+				</ul>
+			</ul>
+		</ul>
+		<hr>
+	</body>
+	<footer>
+ 		<div class="footer-bg">
+			
+  			<div class="footer-text">
+				<a href="#top"> <p> Вернуться наверх </p> </a>
+   				<p><strong>Сайт для лабораторной работы</strong></p>
+   				<p>&copy; Александр Липов ПИН-13</p>
+  			</div>
+ 		</div>
+	</footer>
+</html>

@@ -1,0 +1,105 @@
+# Python bytecode and cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.coverage
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# Environment and secrets
+.env*
+*.env
+*.pem
+*.key
+*.crt
+config.local.*
+*.local.yml
+
+# Database files
+*.db
+db.sqlite3
+
+# Node.js (precautionary, not detected but safe)
+node_modules/
+npm-debug.log
+yarn-debug.log
+
+# Go (precautionary)
+/vendor/
+*.test
+.go-cache/
+
+# Java (precautionary)
+target/
+*.class
+.gradle/
+
+# IDE/editor files
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Build and output directories
+dist/
+build/
+out/
+tmp/
+temp/
+*.tmp
+
+# Test and debug artifacts
+test/
+tests/
+debug/
+*.log
+
+# Version control
+.git/
+.gitignore
+.svn/
+.hg/
+
+# Documentation and markdown
+README*
+*.md
+docs/
+
+# Docker and Compose files
+Dockerfile*
+docker-compose*
+compose.yaml*
+
+# Backup and temporary files
+*.bak
+*.~
+*.orig
+
+# Local development
+.local/
+local/
+
+# System files
+Thumbs.db
+.DS_Store
+
+# Static and media output (if not needed in build context)
+staticfiles/
+media/
+
+# Exclude backup dockerignore files
+.dockerignore.bak*
+
+# Exclude backup README files
+README.md.bak
+
+# Exclude backup compose files
+compose.yaml.bak
+
+# Exclude backup Dockerfile
+Dockerfile.bak

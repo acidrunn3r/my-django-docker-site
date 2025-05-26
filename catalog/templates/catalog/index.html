@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="ru">
+<head>
+    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MazdaDrift | Главная</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="{% static 'catalog/img/mazda.png' %}">
+    <link rel="stylesheet" href="{% static 'catalog/css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="dark-theme">
+    <nav class="mazda-nav">
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="{% static 'catalog/img/mazda.png' %}" alt="Mazda Logo">
+                    <span class="logo-text">MazdaDrift</span>
+                </div>
+                <div class="nav-links">
+                    <a href="{% url 'index' %}" class="nav-link active">Главная</a>
+                    <a href="{% url 'media' %}" class="nav-link">Галерея</a>
+                    {% if user.is_authenticated %}
+                        <a href="{% url 'profile' %}" class="nav-link">Мой профиль</a>
+                        {% if user.is_superuser %}
+                            <a href="{% url 'user_management' %}" class="nav-link">Управление пользователями</a>
+                        {% endif %}
+                        <a href="{% url 'logout' %}" class="nav-link">Выйти</a>
+                    {% else %}
+                        <a href="{% url 'login' %}" class="nav-link">Вход</a>
+                        <a href="{% url 'register' %}" class="nav-link">Регистрация</a>
+                    {% endif %}
+                        
+
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="container">
+            {% if user.is_authenticated %}
+                <h1>Добро пожаловать, {{ user.username }}!</h1>
+            {% else %}
+                <h1>Добро пожаловать в мир Mazda</h1>
+            {% endif %}
+            <p>Легендарные роторные двигатели и дрифт-культура</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <section class="models-section">
+            <h2 class="section-title">Популярные модели</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="mazda-card">
+                        <img src="{% static 'catalog/img/fd3s.jpg' %}" class="card-img" alt="RX-7 FD3S">
+                        <div class="card-body">
+                            <h3>RX-7 (FD3S)</h3>
+                            <p class="specs">13B-REW, 280 л.с.</p>
+                            <p class="description">Культовый автомобиль с роторным двигателем</p>
+                            <a href="{% url 'racing' %}" class="mazda-btn">Подробнее</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="mazda-card">
+                        <img src="{% static 'catalog/img/na6ce.jpg' %}" class="card-img" alt="MX-5 Miata">
+                        <div class="card-body">
+                            <h3>MX-5 Miata (NA)</h3>
+                            <p class="specs">B6-ZE, 140 л.с.</p>
+                            <p class="description">Идеальный задний привод для начинающих</p>
+                            <a href="{% url 'media' %}" class="mazda-btn">Галерея</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4">
+                    <div class="mazda-card">
+                        <img src="{% static 'catalog/img/rx8.jpg' %}" class="card-img" alt="RX-8">
+                        <div class="card-body">
+                            <h3>RX-8</h3>
+                            <p class="specs">13B-MSP, 231 л.с.</p>
+                            <p class="description">Уникальные двери и обновлённый ротор</p>
+                            <a href="#" class="mazda-btn">Обсудить</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="video-section">
+            <h2 class="section-title">Mazda в дрифте</h2>
+            <div class="video-container ratio ratio-16x9">
+                <iframe src="https://www.youtube.com/embed/m1d_VJpdyiQ" allowfullscreen></iframe>
+            </div>
+        </section>
+    </main>
+
+    <footer class="mazda-footer">
+        <div class="container">
+            <div class="footer-content">
+                <p class="copyright">© 2025 MazdaDrift. Неофициальный фанатский сайт.</p>
+                <a href="https://www.mazda.com" target="_blank" class="official-link">Официальный сайт Mazda</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
