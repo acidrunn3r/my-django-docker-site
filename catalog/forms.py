@@ -14,7 +14,7 @@ class CustomUserCreationForm(UserCreationForm):
     def clean_username(self):
         username = self.cleaned_data.get('username')
         if not re.match(r'^[a-zA-Z0-9_]+$', username):
-            raise ValidationError("Разрешены только латинские буквы, цифры и подчёркивания.")
+            raise ValidationError("В имени пользователя разрешены только латинские буквы, цифры и подчёркивания.")
         return username
 
 class LoginForm(AuthenticationForm):
