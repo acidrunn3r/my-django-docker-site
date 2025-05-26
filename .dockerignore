@@ -90,7 +90,6 @@ Thumbs.db
 
 # Static and media output (if not needed in build context)
 staticfiles/
-media/
 
 # Exclude backup dockerignore files
 .dockerignore.bak*
