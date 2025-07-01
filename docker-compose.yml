@@ -23,9 +23,11 @@ services:
   web:
     build: .
     container_name: django_app
-    command: bash -c "python manage.py collectstatic --noinput &&
+    command: >
+  bash -c "./scripts/wait-for-it.sh db:5432 -- 
+           python manage.py collectstatic --noinput &&
            python manage.py migrate &&
-           daphne -b 0.0.0.0 -p 8000 web_project.asgi:application"    
+           daphne -b 0.0.0.0 -p 8000 web_project.asgi:application"   
     volumes:
       - .:/app
       - static_volume:/app/staticfiles
