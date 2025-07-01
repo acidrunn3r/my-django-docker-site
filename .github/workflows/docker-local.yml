@@ -2,9 +2,9 @@ name: Local Docker Deploy
 
 on:
   push:
-    branches: [ acidrunn3r-patch-1 ]
+    branches: [ main ]
   pull_request:
-    branches: [ acidrunn3r-patch-1 ]
+    branches: [ main ]
   workflow_dispatch:
 
 env:
