@@ -30,6 +30,7 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 TELEGRAM_BOT_TOKEN = config('TELEGRAM_BOT_TOKEN')
 TELEGRAM_CHAT_ID = config('TELEGRAM_CHAT_ID')
 
+
 ALLOWED_HOSTS = ['localhost']
 
 
