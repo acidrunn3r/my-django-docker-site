@@ -38,6 +38,9 @@ services:
     environment:
       - DATABASE_URL=postgres://postgres:admin@db:5432/postgres
       - REDIS_URL=redis://redis:6379/0
+      - SECRET_KEY=${SECRET_KEY}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
 
   db:
     image: postgres:13
